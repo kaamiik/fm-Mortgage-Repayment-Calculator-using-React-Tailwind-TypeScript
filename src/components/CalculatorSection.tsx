@@ -1,23 +1,23 @@
+import React from 'react';
+
 import Button from './Button';
 import Radios from './Radios';
 import NumberFieldAffix from './NumberFieldAffix';
-import type { FormData } from '../types';
 
+import type { Inputs } from '../types';
 import type { UseFormRegister, FieldErrors } from 'react-hook-form';
-
-type CalculatorSectionProps = {
-  onCalculate: () => void;
-  onClearAll: () => void;
-  register: UseFormRegister<FormData>;
-  errors: FieldErrors<FormData>;
-};
 
 function CalculatorSection({
   onCalculate,
   onClearAll,
   register,
   errors,
-}: CalculatorSectionProps) {
+}: {
+  onCalculate: (e?: React.BaseSyntheticEvent) => void;
+  onClearAll: () => void;
+  register: UseFormRegister<Inputs>;
+  errors: FieldErrors<Inputs>;
+}) {
   return (
     <div className="flex flex-col gap-300 px-300 py-400 sm:gap-500 md:p-500">
       <form onSubmit={onCalculate} className="flex flex-col gap-300 sm:gap-500">
@@ -30,7 +30,7 @@ function CalculatorSection({
 
         <div className="flex flex-col gap-300">
           <NumberFieldAffix
-            type="amount"
+            type="prefix"
             label="Mortgage Amount"
             symbol="£"
             name="amount"
@@ -39,7 +39,7 @@ function CalculatorSection({
           />
           <div className="flex flex-col gap-300 sm:flex-row">
             <NumberFieldAffix
-              type="term"
+              type="suffix"
               label="Mortgage Term"
               symbol="years"
               name="term"
@@ -47,7 +47,7 @@ function CalculatorSection({
               error={errors.term}
             />
             <NumberFieldAffix
-              type="rate"
+              type="suffix"
               label="Interest Rate"
               symbol="%"
               name="rate"

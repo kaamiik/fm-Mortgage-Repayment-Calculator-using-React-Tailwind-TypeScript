@@ -1,13 +1,7 @@
 import { formatCurrency } from '../utils';
+import type { MortgageResults } from '../types';
 
-interface ResultsSectionProps {
-  results: {
-    monthlyPayment: number;
-    totalRepayment: number;
-  } | null;
-}
-
-function ResultsSection({ results }: ResultsSectionProps) {
+function ResultsSection({ results }: { results: MortgageResults }) {
   return (
     <div
       aria-live="polite"

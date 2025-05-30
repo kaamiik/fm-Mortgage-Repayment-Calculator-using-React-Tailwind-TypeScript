@@ -1,8 +1,11 @@
-export interface FormData {
+export type Inputs = {
   amount: number;
   term: number;
   rate: number;
   type: 'repayment' | 'interest';
-  repayment?: string;
-  interest?: string;
-}
+};
+
+export type MortgageResults = {
+  monthlyPayment: number;
+  totalRepayment: number;
+} | null;
