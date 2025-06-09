@@ -16,7 +16,7 @@ function CalculatorSection({
   onCalculate: (e?: React.BaseSyntheticEvent) => void;
   onClearAll: () => void;
   register: UseFormRegister<Inputs>;
-  errors: FieldErrors;
+  errors: FieldErrors<Inputs>;
 }) {
   return (
     <div className="flex flex-col gap-300 px-300 py-400 sm:gap-500 md:p-500">
