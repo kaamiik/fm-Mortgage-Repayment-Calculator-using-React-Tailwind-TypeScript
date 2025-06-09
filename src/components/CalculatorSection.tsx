@@ -16,11 +16,15 @@ function CalculatorSection({
   onCalculate: (e?: React.BaseSyntheticEvent) => void;
   onClearAll: () => void;
   register: UseFormRegister<Inputs>;
-  errors: FieldErrors<Inputs>;
+  errors: FieldErrors;
 }) {
   return (
     <div className="flex flex-col gap-300 px-300 py-400 sm:gap-500 md:p-500">
-      <form onSubmit={onCalculate} className="flex flex-col gap-300 sm:gap-500">
+      <form
+        onSubmit={onCalculate}
+        className="flex flex-col gap-300 sm:gap-500"
+        noValidate
+      >
         <div className="flex flex-col items-start gap-100 sm:flex-row sm:justify-between">
           <h1 className="text-600 text-slate-900">Mortgage Calculator</h1>
           <Button category="link" onClick={onClearAll}>

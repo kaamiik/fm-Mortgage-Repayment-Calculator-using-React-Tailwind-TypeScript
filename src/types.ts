@@ -1,9 +1,7 @@
-export type Inputs = {
-  amount: number;
-  term: number;
-  rate: number;
-  type: 'repayment' | 'interest';
-};
+import { z } from 'zod';
+import { mortgageSchema } from './schemas/mortgageSchema';
+
+export type Inputs = z.infer<typeof mortgageSchema>;
 
 export type MortgageResults = {
   monthlyPayment: number;

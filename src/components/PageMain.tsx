@@ -7,6 +7,8 @@ import CalculatorSection from './CalculatorSection';
 import ResultsSection from './ResultSection';
 
 import type { Inputs, MortgageResults } from '../types';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { mortgageSchema } from '../schemas/mortgageSchema';
 
 function PageMain() {
   const {
@@ -14,7 +16,9 @@ function PageMain() {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<Inputs>();
+  } = useForm({
+    resolver: zodResolver(mortgageSchema),
+  });
 
   const [results, setResults] = React.useState<MortgageResults>(null);
 
