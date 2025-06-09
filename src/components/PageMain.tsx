@@ -16,22 +16,20 @@ function PageMain() {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm({
+  } = useForm<Inputs>({
     resolver: zodResolver(mortgageSchema),
   });
 
   const [results, setResults] = React.useState<MortgageResults>(null);
 
   function onSubmit(data: Inputs) {
-    console.log(data);
-    console.log(errors);
     const results = calculateMortgage(
-      data.amount,
-      data.rate,
-      data.term,
+      Number(data.amount),
+      Number(data.rate),
+      Number(data.term),
       data.type
     );
-    setResults(results ?? null);
+    setResults(results);
   }
 
   function handleClearAll() {
