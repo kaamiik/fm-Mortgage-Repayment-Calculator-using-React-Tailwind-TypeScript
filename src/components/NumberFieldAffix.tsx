@@ -8,7 +8,7 @@ type NumberFieldProps = {
   symbol: string;
   name: keyof Inputs;
   register: UseFormRegister<Inputs>;
-  error?: FieldError;
+  error: FieldError | undefined;
 };
 
 function NumberFieldAffix({
